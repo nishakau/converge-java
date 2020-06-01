@@ -1,5 +1,5 @@
 # converge-java
-This repository contains the ecommerce application written on java and utilizes converge database
+This repository contains the ecommerce application written on java and utilizes converge database, follow the below steps to configure the application to your system
 
 1.    Install Oracle WebLogic Server
 2.    Configure the WebLogic Maven Plug-In
