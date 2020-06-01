@@ -30,7 +30,7 @@ class AnalyticsService {
 				
 			}
 			if(vct.get(1) != null) {
-				int totalCount = (int) vct.get(1);
+				int totalCount = (Integer) vct.get(1);
 				ant.setTotalProductCount(totalCount);
 			}
 			

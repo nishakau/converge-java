@@ -13,11 +13,11 @@
 
    
    
-   <bean id="datasourceAnalytics" class="org.springframework.jndi.JndiObjectFactoryBean">
+   <bean id="datasource_jsonXml" class="org.springframework.jndi.JndiObjectFactoryBean">
    		<property name="jndiName" value="converge.oracle.jsonxml"/>
    </bean>
    
-    <bean id="datasourceAnalytics_2" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <bean id="datasource_spatialAnalytics" class="org.springframework.jndi.JndiObjectFactoryBean">
     	<property name="jndiName" value="converge.oracle.spatialAnalytics"/>
     </bean>
     

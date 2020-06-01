@@ -13,10 +13,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DBSource {
 	
-	private DataSource datasourceJsonCon;
-	private DataSource datasourceSpatialCon;
-	private DataSource datasourceAnalytics;
-	private DataSource datasourceAnalytics_2;
+	private DataSource datasource_jsonXml;
+	private DataSource datasource_spatialAnalytics;
 	private static final Logger LOG = Logger.getLogger(DBSource.class);
 	
 	
@@ -26,10 +24,10 @@ public class DBSource {
 		LOG.debug("Reached to get Analytics Connection");
 		Connection con = null;
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		datasourceAnalytics = (DataSource) context.getBean("datasourceAnalytics");
+		datasource_jsonXml = (DataSource) context.getBean("datasource_jsonXml");
 			
 		try {
-			con = datasourceAnalytics.getConnection();
+			con = datasource_jsonXml.getConnection();
 			con.setAutoCommit(false);
 			LOG.info("Success connection");
 		}catch(SQLException ex) {
@@ -46,10 +44,10 @@ public class DBSource {
 		LOG.debug("Reached to get Analytics2 Connection");
 		Connection con = null;
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		datasourceAnalytics_2 = (DataSource) context.getBean("datasourceAnalytics_2");
+		datasource_spatialAnalytics = (DataSource) context.getBean("datasource_spatialAnalytics");
 			
 		try {
-			con = datasourceAnalytics_2.getConnection();
+			con = datasource_spatialAnalytics.getConnection();
 			con.setAutoCommit(false);
 			LOG.info("Success connection");
 		}catch(SQLException ex) {
