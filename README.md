@@ -28,3 +28,9 @@ Download converge-java.zip or git clone converge-java.
 ```
 git clone https://github.com/nishakau/converge-java
 ```
+### 4. Build the application by maven
+After downloading application, you can build application.war (converge.war) using maven.
+```
+cd converge-java
+mvn package
+```
