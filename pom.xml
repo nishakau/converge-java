@@ -8,6 +8,15 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>converge Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
+	<!-- weblogic-maven-plugin properties -->
+	<properties>
+		<weblogic.adminurl>t3://localhost:7001</weblogic.adminurl>
+		<!-- weblogic.user></weblogic.user>
+		<weblogic.password></weblogic.password-->
+		<weblogic.remote>false</weblogic.remote>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -66,7 +75,7 @@
 			<artifactId>xdb6</artifactId>
 			<version>12.2.0.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.oracle.database.xml</groupId>
 			<artifactId>xmlparserv2</artifactId>
@@ -74,6 +83,21 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>converge</finalName>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>com.oracle.weblogic</groupId>
+				<artifactId>weblogic-maven-plugin</artifactId>
+				<version>14.1.1-0-0</version>
+
+				<configuration>
+					<adminurl>${weblogic.adminurl}</adminurl>
+					<user>${weblogic.user}</user>
+					<password>${weblogic.password}</password>
+					<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+					<name>${project.build.finalName}</name>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
