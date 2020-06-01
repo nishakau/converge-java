@@ -22,3 +22,9 @@ https://docs.oracle.com/middleware/12212/lcm/WLSIG/GUID-4AECC00D-782D-4E77-85DF-
 ### 2. Configuring the WebLogic Maven Plug-In
 Configuring the WebLogic Maven Plug-In.   
 https://docs.oracle.com/middleware/12212/wls/WLPRG/maven.htm#WLPRG883
+
+### 3. Download converge-java
+Download converge-java.zip or git clone converge-java.
+```
+git clone https://github.com/nishakau/converge-java
+```
