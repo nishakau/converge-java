@@ -24,4 +24,8 @@ hs_err_pid*
 
 
 #target files
-*/target/**
+target/*
+
+
+#backup file
+*.bkp
