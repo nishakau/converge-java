@@ -28,4 +28,4 @@ target/*
 
 
 #backup file
-*.bkp
+*.bak
