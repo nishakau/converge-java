@@ -12,8 +12,8 @@
 	<!-- weblogic-maven-plugin properties -->
 	<properties>
 		<weblogic.adminurl>t3://localhost:7001</weblogic.adminurl>
-		<!-- weblogic.user></weblogic.user>
-		<weblogic.password></weblogic.password-->
+		<weblogic.user></weblogic.user>
+		<weblogic.password></weblogic.password>
 		<weblogic.remote>false</weblogic.remote>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -99,6 +99,15 @@
 					<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
 					<name>${project.build.finalName}</name>
 				</configuration>
+				 <executions> 
+					<execution> 
+						<id>wls-deploy</id>
+						<phase>install</phase> 
+					<goals> 
+						<goal>deploy</goal> 
+					</goals> 
+				</execution> 
+        </executions> 
 			</plugin>
 		</plugins>
 	</build>
