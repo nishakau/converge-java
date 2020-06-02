@@ -37,5 +37,5 @@ mvn package
 
 ### 5. Deploy the application to WebLogic Server
 ```
-mvn weblogic:deploy
+mvn install
 ```
