@@ -34,3 +34,9 @@ After downloading application, you can build application.war (converge.war) usin
 cd converge-java
 mvn package
 ```
+
+### 5. Deploy the application to WebLogic Server
+Make sure you have made environment sepecific changes in the pom.xml file and also your local WebLogic instance is up, before you hit the below command.
+```
+mvn weblogic:deploy
+```
