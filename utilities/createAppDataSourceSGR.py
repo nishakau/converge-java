@@ -26,7 +26,7 @@ cd('/JDBCSystemResources/datasource_spatialAnalytics/JDBCResource/datasource_spa
 cmo.createProperty('user')
 
 cd('/JDBCSystemResources/datasource_spatialAnalytics/JDBCResource/datasource_spatialAnalytics/JDBCDriverParams/datasource_spatialAnalytics/Properties/datasource_spatialAnalytics/Properties/user')
-cmo.setValue('appnodejs')
+cmo.setValue('analytics')
 
 cd('/JDBCSystemResources/datasource_spatialAnalytics/JDBCResource/datasource_spatialAnalytics/JDBCDataSourceParams/datasource_spatialAnalytics')
 cmo.setGlobalTransactionsProtocol('OnePhaseCommit')
