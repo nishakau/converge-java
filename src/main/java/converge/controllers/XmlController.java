@@ -3,8 +3,9 @@ package converge.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.http.MediaType;
@@ -19,13 +20,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/xml")
 public class XmlController {
 	
-	private static final Logger LOG = LogManager.getLogger(XmlController.class);
+	
 
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	@ResponseBody
 	public String insertXML(@RequestBody String str) {
 		XmlDao xd = new XmlDao();
-		LOG.info("from xml insert");
+		
 		String message =null;
 		System.out.println("From xml inset function");
 		System.out.println(str);

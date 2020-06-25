@@ -1,7 +1,5 @@
 package converge.controllers;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -15,10 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import converge.models.Product;
 
+import java.util.logging.Logger;
+
 @Controller
 @RequestMapping("/json")
 public class JSONController {
-	private static final Logger LOG = LogManager.getLogger(ProductController.class);
+	
 	
 	@RequestMapping(value ="/product/{id}", method = RequestMethod.GET, produces= "application/json")
 	@ResponseBody
@@ -32,7 +32,6 @@ public class JSONController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		LOG.info("Hello reached to json");
 		return jsonString;
 	}
 	
@@ -55,7 +54,7 @@ public class JSONController {
 			else
 				recordsModified = jdao.updateProductById(null, jsonString, String.valueOf(json.get("pid")));
 			message = recordsModified +" records updated";
-			LOG.info(recordsModified+" records modified");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,7 +81,7 @@ public class JSONController {
 		
 			recordsModified = jdao.deleteProductById(null,String.valueOf(json.get("pid")));
 			messageString = recordsModified+" records modified";
-			LOG.info(recordsModified+" records modified");
+                    
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
