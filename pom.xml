@@ -11,7 +11,7 @@
 
 	<!-- weblogic-maven-plugin properties -->
 	<properties>
-		<weblogic.adminurl>t3://localhost:7001</weblogic.adminurl>
+		<weblogic.adminurl>t3://localhost:7101</weblogic.adminurl>
 		<weblogic.user>weblogic</weblogic.user>
 		<weblogic.password>Oracle123!</weblogic.password>
 		<weblogic.remote>false</weblogic.remote>
