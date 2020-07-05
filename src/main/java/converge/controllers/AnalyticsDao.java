@@ -15,6 +15,17 @@ import org.apache.log4j.Logger;
 import converge.dbHelper.DBSource;
 import converge.models.Analytics;
 
+import java.io.BufferedReader;
+
+import java.io.InputStreamReader;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 class AnalyticsDao {
 	private static final Logger LOG = Logger.getLogger(AnalyticsDao.class);
 
@@ -61,15 +72,17 @@ class AnalyticsDao {
 	private static String sqlString2 ="select count(a.product_document.pid) as Total from products a";
 	private static String sqlString3 ="SELECT a.product_document.price, count(a.product_document.price) as pricecounts from products a  group by a.product_document.price HAVING   (a.product_document.price) < 20";
 	
-	
+	private static String urlStringForProductByCategory ="http://150.136.48.126:9090/ords/apppdb/appnodejs/app/app1/";
 	/*
 	 * To get the count of products by its category
 	 * Products are stored as JSON object in the table.
 	 * */
 	public Vector getProductCountByCategory(Connection con) throws Exception {
 		LOG.debug("Reached to getProductCountByCategory");
-		
-		List<Map<String,String>> listOfMap = new ArrayList<Map<String,String>>();
+		Vector v = getProductCountByCategoryOrds();
+                System.out.println(v.get(0));
+                System.out.println(v.get(1));
+		/*List<Map<String,String>> listOfMap = new ArrayList<Map<String,String>>();
 		Connection conn = con;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
@@ -104,11 +117,49 @@ class AnalyticsDao {
 			if (conn != null && con == null) {
 				conn.close();
 			}
-		}
-
+		}*/
 		return v;
 
 	}
+        
+    /*
+     * To get the count of products by its category using ORDS call
+     * Products are stored as JSON object in the table.
+     * */
+    public Vector getProductCountByCategoryOrds() throws Exception{
+        Vector v = new Vector();
+        String readLine = null;
+        List<String> category = new ArrayList<String>();
+        List<String> count = new ArrayList<String>();
+        try{
+            URL url = new URL(urlStringForProductByCategory);
+            HttpURLConnection connection =(HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            while((readLine =in.readLine())!=null){
+                response.append(readLine);
+            }
+            in.close();
+            JSONObject jo = (JSONObject) new JSONParser().parse(response.toString());
+            JSONArray items =(JSONArray) jo.get("items");
+            for(int i=0;i<items.size();i++){
+                JSONObject temp = (JSONObject) items.get(i);
+                category.add(String.valueOf(temp.get("category")));
+                count.add(String.valueOf(temp.get("counts")));
+               
+            }
+            v.add(category);
+            v.add(count);
+        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+       
+       
+        return v;
+        
+    }
 
 	/*
 	 * To get the total count of the product
