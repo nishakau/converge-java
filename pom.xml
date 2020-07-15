@@ -11,9 +11,9 @@
 
 	<!-- weblogic-maven-plugin properties -->
 	<properties>
-		<weblogic.adminurl>t3://localhost:7001</weblogic.adminurl>
-		<weblogic.user></weblogic.user>
-		<weblogic.password></weblogic.password>
+		<weblogic.adminurl>t3://localhost:7101</weblogic.adminurl>
+		<weblogic.user>weblogic</weblogic.user>
+		<weblogic.password>Oracle123!</weblogic.password>
 		<weblogic.remote>false</weblogic.remote>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -107,6 +107,20 @@
 						<goal>deploy</goal> 
 					</goals> 
 				</execution> 
+                                <execution> 
+						<id>wls-redeploy</id>
+						<phase>pre-integration-test</phase> 
+					<goals> 
+						<goal>redeploy</goal> 
+					</goals> 
+				</execution> 
+                                <execution> 
+						<id>wls-undeploy</id>
+						<phase>post-integration-test</phase> 
+					<goals> 
+						<goal>undeploy</goal> 
+					</goals> 
+				</execution>
         </executions> 
 			</plugin>
 		</plugins>
