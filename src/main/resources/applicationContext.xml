@@ -21,6 +21,11 @@
     	<property name="jndiName" value="converge.oracle.spatialAnalytics"/>
     </bean>
     
+    <bean id="xmldsbean" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="convergeddb.jsonxmlds"/>
+    </bean>
     
-    
+    <bean id="spatialdsbean" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="convergeddb.spatialds"/>
+    </bean>
 </beans>
